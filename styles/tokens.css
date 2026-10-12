@@ -1,0 +1,144 @@
+/* ==========================================================================
+   Lumen AI Console — Design Tokens
+   Layer 1: primitives (from brief). Layer 2: semantic (consumed by components).
+   Components MUST reference semantic tokens only — never raw hex values.
+   ========================================================================== */
+
+:root {
+  /* ---------- Typography primitives (brief) ---------- */
+  --font-family-primary: "Pin Sans";
+  --font-family-stack: "Pin Sans", -apple-system, system-ui, "Segoe UI", Roboto,
+    "Oxygen-Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica,
+    "ヒラギノ角ゴ Pro W3", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif;
+  --font-size-base: 12px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 24px;
+  --font-size-xl: 32px;             /* extension: KPI numerals only */
+  --font-weight-base: 400;
+  --font-weight-medium: 500;
+  --font-weight-strong: 600;
+  --font-line-height-base: normal;
+  --font-line-height-tight: 1.1;    /* extension: KPI numerals */
+  --font-line-height-body: 1.45;    /* extension: multi-line copy */
+
+  /* ---------- Color primitives (brief) ---------- */
+  --color-text-primary: #211922;
+  --color-text-tertiary: #2b48d4;
+  --color-surface-base: #000000;
+  --color-surface-muted: #ffffff;
+  --color-surface-raised: #fbfbf9;
+  --color-surface-strong: #e5e5e0;
+
+  /* ---------- Color primitives (extensions, documented) ---------- */
+  --color-ink-secondary: #47414f;        /* 7.9:1 on glass */
+  --color-indigo-700: #2239b0;
+  --color-indigo-500: #4a55e0;
+  --color-lavender-300: #a8acf6;
+  --color-teal-300: #3fd8c2;
+  --color-navy-900: #1f2550;
+  --color-navy-700: #343a78;
+  --color-red-700: #b3261e;
+  --color-red-200: #ffb4ab;
+  --color-green-700: #0d7356;
+  --color-green-200: #7af0d4;
+
+  /* ---------- Spacing (brief + extensions on a 6/14 rhythm) ---------- */
+  --space-half: 3px;
+  --space-1: 6px;
+  --space-2: 14px;
+  --space-3: 20px;
+  --space-4: 28px;
+  --space-5: 40px;
+
+  /* ---------- Radius (brief) ---------- */
+  --radius-xs: 8px;
+  --radius-sm: 16px;
+  --radius-md: 50px;   /* pill */
+
+  /* ---------- Motion (brief) ---------- */
+  --motion-duration-instant: 85ms;
+  --motion-duration-fast: 250ms;
+  --motion-ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* ---------- Control sizing ---------- */
+  --control-height-sm: 32px;
+  --control-height-md: 40px;
+  --nav-item-size: 52px;
+
+  /* ======================= SEMANTIC LAYER ======================= */
+
+  /* Canvas */
+  --color-bg-canvas:
+    radial-gradient(1200px 700px at 15% 0%, #e4e5f2 0%, transparent 60%),
+    radial-gradient(900px 600px at 100% 100%, #c4c3ea 0%, transparent 60%),
+    linear-gradient(160deg, #d9dbe9 0%, #c3c6dc 55%, #b7bad6 100%);
+
+  /* Text */
+  --color-fg-default: var(--color-text-primary);
+  --color-fg-muted: var(--color-ink-secondary);
+  --color-fg-accent: var(--color-text-tertiary);
+  --color-fg-on-accent: var(--color-surface-muted);
+  --color-fg-danger: var(--color-red-700);
+  --color-fg-success: var(--color-green-700);
+
+  /* Surfaces */
+  --color-surface-glass: rgb(251 251 249 / 0.5);
+  --color-surface-glass-hover: rgb(251 251 249 / 0.64);
+  --color-surface-glass-strong: rgb(255 255 255 / 0.78);
+  --color-border-glass: rgb(255 255 255 / 0.7);
+  --color-border-subtle: rgb(33 25 34 / 0.1);
+  --color-surface-popover: var(--color-surface-raised);
+  --color-surface-popover-hover: var(--color-surface-strong);
+  --color-surface-inverse: linear-gradient(155deg, var(--color-navy-700) 0%, var(--color-navy-900) 70%);
+  --color-surface-scrim: rgb(0 0 0 / 0.08);
+
+  /* Actions */
+  --color-action-primary: var(--color-text-tertiary);
+  --color-action-primary-hover: var(--color-indigo-700);
+  --color-action-disabled-bg: var(--color-surface-strong);
+  --color-action-disabled-fg: var(--color-ink-secondary);
+
+  /* Status */
+  --color-status-success-bg: rgb(13 115 86 / 0.12);
+  --color-status-danger-bg: rgb(179 38 30 / 0.1);
+  --color-status-danger-border: rgb(179 38 30 / 0.45);
+
+  /* Data visualisation (non-text; ≥3:1 against card surface when meaningful) */
+  --color-data-1: var(--color-indigo-500);
+  --color-data-2: var(--color-teal-300);
+  --color-data-3: var(--color-surface-muted);
+  --color-data-4: var(--color-lavender-300);
+  --color-data-5: var(--color-navy-900);
+  --color-data-track: rgb(255 255 255 / 0.55);
+
+  /* Focus */
+  --color-focus-ring: var(--color-text-tertiary);
+  --color-focus-halo: var(--color-surface-muted);
+  --focus-ring-width: 2px;
+
+  /* Elevation */
+  --shadow-glass: inset 0 1px 0 rgb(255 255 255 / 0.65), 0 10px 30px rgb(40 44 96 / 0.12);
+  --shadow-glass-hover: inset 0 1px 0 rgb(255 255 255 / 0.8), 0 16px 40px rgb(40 44 96 / 0.18);
+  --shadow-popover: 0 18px 48px rgb(31 37 80 / 0.24);
+  --blur-glass: blur(22px) saturate(150%);
+}
+
+/* Inverse scope: re-maps semantic tokens so nested components stay token-only. */
+.surface-inverse {
+  --color-fg-default: var(--color-surface-muted);
+  --color-fg-muted: rgb(255 255 255 / 0.8);
+  --color-fg-success: var(--color-green-200);
+  --color-fg-danger: var(--color-red-200);
+  --color-status-success-bg: rgb(122 240 212 / 0.14);
+  --color-status-danger-bg: rgb(255 180 171 / 0.14);
+  --color-status-danger-border: rgb(255 180 171 / 0.6);
+  --color-focus-ring: var(--color-surface-muted);
+  --color-focus-halo: var(--color-navy-900);
+  --color-data-track: rgb(255 255 255 / 0.14);
+  --color-surface-glass: rgb(255 255 255 / 0.1);
+  --color-surface-glass-hover: rgb(255 255 255 / 0.18);
+  --color-border-glass: rgb(255 255 255 / 0.16);
+}

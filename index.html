@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lumen AI Console — Operations Overview</title>
+  <meta name="description"
+    content="Real-time operations dashboard for Lumen AI: model accuracy, inference volume, compute throughput, latency, cost and revenue in one glassmorphic workspace." />
+  <meta name="theme-color" content="#c3c6dc" />
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/models.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to dashboard</a>
+
+  <div class="orbs" aria-hidden="true">
+    <span class="orb orb--1"></span><span class="orb orb--2"></span><span class="orb orb--3"></span>
+    <span class="orb orb--4"></span><span class="orb orb--5"></span>
+  </div>
+
+  <div class="app">
+    <!-- Primary navigation (1) -->
+    <nav class="rail" aria-label="Primary">
+      <a class="rail__brand" href="#overview" aria-label="Lumen AI home">
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <defs>
+            <linearGradient id="logo-g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff" />
+              <stop offset=".55" stop-color="#d9dcff" />
+              <stop offset="1" stop-color="#8f96f0" />
+            </linearGradient>
+          </defs>
+          <path fill="url(#logo-g)"
+            d="M24 3c2.6 9.2 5.8 12.4 15 15-9.2 2.6-12.4 5.8-15 15-2.6-9.2-5.8-12.4-15-15 9.2-2.6 12.4-5.8 15-15Z" />
+          <path fill="url(#logo-g)" opacity=".75"
+            d="M37 28c1.2 4.2 2.8 5.8 7 7-4.2 1.2-5.8 2.8-7 7-1.2-4.2-2.8-5.8-7-7 4.2-1.2 5.8-2.8 7-7Z" />
+        </svg>
+      </a>
+      <ul class="rail__list">
+        <li><a class="rail__link" href="#overview" aria-current="page">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="7" height="7" rx="2" />
+              <rect x="14" y="3" width="7" height="7" rx="2" />
+              <rect x="3" y="14" width="7" height="7" rx="2" />
+              <rect x="14" y="14" width="7" height="7" rx="2" />
+            </svg>
+            <span class="rail__label">Overview</span></a></li>
+        <li><a class="rail__link" href="#models">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <rect x="6" y="6" width="12" height="12" rx="2" />
+              <path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4" />
+            </svg>
+            <span class="rail__label">Models</span></a></li>
+        <li><a class="rail__link" href="#agents">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <rect x="4" y="8" width="16" height="12" rx="3" />
+              <path d="M12 4v4M9 13h.01M15 13h.01M9 17h6" />
+            </svg>
+            <span class="rail__label">Agents</span></a></li>
+        <li><a class="rail__link" href="#datasets">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <ellipse cx="12" cy="5" rx="8" ry="3" />
+              <path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3" />
+            </svg>
+            <span class="rail__label">Datasets</span></a></li>
+        <li><a class="rail__link" href="#team">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <circle cx="9" cy="8" r="4" />
+              <path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7M16 4.1a4 4 0 0 1 0 7.8M22 21c0-3-1.7-5.6-4.2-6.5" />
+            </svg>
+            <span class="rail__label">Team</span></a></li>
+        <li><a class="rail__link" href="#billing">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="5" width="20" height="14" rx="3" />
+              <path d="M2 10h20M6 15h4" />
+            </svg>
+            <span class="rail__label">Billing</span></a></li>
+      </ul>
+      <span class="rail__spacer" aria-hidden="true"></span>
+      <a class="rail__link" href="#settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+          stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3" />
+          <path
+            d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z" />
+        </svg>
+        <span class="rail__label">Settings</span></a>
+    </nav>
+
+    <main id="main" class="main" tabindex="-1">
+      <div id="overview-view">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Production workspace</p>
+            <h1>Operations overview</h1>
+        </div>
+        <div class="topbar__controls">
+          <div class="field">
+            <svg class="field__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" />
+              <path d="m20 20-3.5-3.5" />
+            </svg>
+            <label for="search" class="sr-only">Search widgets</label>
+            <input class="input" id="search" type="search" placeholder="Search widgets" autocomplete="off"
+              aria-describedby="search-count" />
+          </div>
+          <div class="segmented" role="group" aria-label="Date range">
+            <button class="segmented__btn" type="button" data-range="24h" aria-pressed="false">24h</button>
+            <button class="segmented__btn" type="button" data-range="7d" aria-pressed="true">7d</button>
+            <button class="segmented__btn" type="button" data-range="30d" aria-pressed="false">30d</button>
+            <button class="segmented__btn" type="button" data-range="90d" aria-pressed="false">90d</button>
+          </div>
+          <label class="switch" for="density">
+            <input type="checkbox" id="density" role="switch" />
+            <span class="switch__track" aria-hidden="true"></span>
+            Compact
+          </label>
+          <label class="select-field" for="state-preview">
+            State
+            <select class="select" id="state-preview">
+              <option value="ready">Live data</option>
+              <option value="loading">Loading</option>
+              <option value="error">Error</option>
+              <option value="empty">Empty</option>
+            </select>
+          </label>
+          <button class="btn btn--primary" id="export-btn" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3v12M7 10l5 5 5-5M5 21h14" />
+            </svg>
+            <span class="btn__label">Export report</span>
+          </button>
+        </div>
+      </header>
+
+      <p class="sr-only" id="search-count" aria-live="polite"></p>
+
+      <section class="grid" id="grid" aria-label="Workspace metrics">
+        <article class="card" data-card="users" data-keywords="users sessions chat vision agents">
+          <header class="card__head">
+            <h2 class="card__title">Active users</h2>
+          </header>
+          <div class="card__body"></div>
+        </article>
+        <article class="card" data-card="inference" data-keywords="requests calls volume">
+          <header class="card__head">
+            <h2 class="card__title">Inference volume</h2>
+          </header>
+          <div class="card__body"></div>
+        </article>
+        <article class="card surface-inverse" data-card="accuracy" data-keywords="models eval quality error">
+          <header class="card__head">
+            <h2 class="card__title">Model error reduction</h2>
+          </header>
+          <div class="card__body"></div>
+        </article>
+        <article class="card" data-card="growth" data-keywords="signups trend">
+          <header class="card__head">
+            <h2 class="card__title">Workspace growth</h2>
+          </header>
+          <div class="card__body"></div>
+        </article>
+        <article class="card surface-inverse" data-card="tokens" data-keywords="usage tokens consumption">
+          <header class="card__head">
+            <h2 class="card__title">Token usage</h2>
+          </header>
+          <div class="card__body"></div>
+        </article>
+        <article class="card card--glow" data-card="throughput" data-keywords="compute gpu region rps">
+          <header class="card__head">
+            <h2 class="card__title">Compute throughput by region</h2>
+          </header>
+          <div class="card__body"></div>
+        </article>
+        <article class="card surface-inverse" data-card="latency" data-keywords="p95 speed response">
+          <header class="card__head">
+            <h2 class="card__title">p95 latency</h2>
+          </header>
+          <div class="card__body"></div>
+        </article>
+        <article class="card surface-inverse" data-card="revenue" data-keywords="mrr retention money">
+          <header class="card__head">
+            <h2 class="card__title">Revenue</h2>
+          </header>
+          <div class="card__body"></div>
+        </article>
+        <article class="card" data-card="weekly" data-keywords="deployments releases">
+          <header class="card__head">
+            <h2 class="card__title">Deployments per day</h2>
+          </header>
+          <div class="card__body"></div>
+        </article>
+        <article class="card card--glow" data-card="capacity" data-keywords="gpu memory storage cluster">
+          <header class="card__head">
+            <h2 class="card__title">Cluster capacity</h2>
+          </header>
+          <div class="card__body"></div>
+        </article>
+        <article class="card" data-card="cost" data-keywords="spend budget money">
+          <header class="card__head">
+            <h2 class="card__title">Cost per 1k requests</h2>
+          </header>
+          <div class="card__body"></div>
+        </article>
+        <article class="card" data-card="cache" data-keywords="cache hit rate">
+          <header class="card__head">
+            <h2 class="card__title">Cache hit rate</h2>
+          </header>
+          <div class="card__body"></div>
+        </article>
+        <article class="card" data-card="outputs" data-keywords="images generations gallery">
+          <header class="card__head">
+            <h2 class="card__title">Recent generations</h2>
+          </header>
+          <div class="card__body"></div>
+        </article>
+        <article class="card" data-card="jobs" data-keywords="fine-tune training queue">
+          <header class="card__head">
+            <h2 class="card__title">Fine-tuning jobs</h2>
+          </header>
+          <div class="card__body"></div>
+        </article>
+        <article class="card" data-card="donut" data-keywords="traffic share models">
+          <header class="card__head">
+            <h2 class="card__title">Traffic by model</h2>
+          </header>
+          <div class="card__body"></div>
+        </article>
+      </section>
+
+        <div class="grid-empty" id="grid-empty" hidden>
+          <h2 id="grid-empty-title">No widgets match your search</h2>
+          <p class="state-hint">Try a metric name such as “latency”, “cost” or “tokens”.</p>
+          <button class="btn btn--ghost btn--sm" type="button" id="clear-search"><span class="btn__label">Clear
+              search</span></button>
+        </div>
+      </div>
+
+      <!-- Models & 3x3 Klasör Sayfası -->
+      <div id="models-view" hidden></div>
+    </main>
+
+    <aside class="dock" aria-label="Integrations">
+      <button class="dock__btn" type="button" data-app="Workflows"><span class="app-icon app-icon--indigo"><svg
+            viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <circle cx="8" cy="9" r="4" />
+            <circle cx="16" cy="9" r="4" />
+            <circle cx="12" cy="16" r="4" opacity=".85" />
+          </svg></span><span class="dock__label">Open Workflows</span></button>
+      <button class="dock__btn" type="button" data-app="Automations"><span class="app-icon app-icon--glass"><svg
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+            <path
+              d="M12 4a3 3 0 0 1 3 3 3 3 0 0 1 4 4 3 3 0 0 1-1 5 3 3 0 0 1-4 3 3 3 0 0 1-4 0 3 3 0 0 1-4-3 3 3 0 0 1-1-5 3 3 0 0 1 4-4 3 3 0 0 1 3-3Z" />
+          </svg></span><span class="dock__label">Open Automations</span></button>
+      <button class="dock__btn" type="button" data-app="Media studio"><span class="app-icon app-icon--violet"><svg
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="4" y="4" width="16" height="16" rx="3" />
+            <path d="M10 9v6l5-3-5-3Z" fill="currentColor" />
+          </svg></span><span class="dock__label">Open Media studio</span></button>
+      <button class="dock__btn" type="button" data-app="Files"><span class="app-icon app-icon--sky"><svg
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="4" y="4" width="16" height="16" rx="3" />
+            <path d="M4 9h16" />
+          </svg></span><span class="dock__label">Open Files</span></button>
+      <button class="dock__btn" type="button" data-app="Billing"><span class="app-icon app-icon--round"><svg
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+            aria-hidden="true">
+            <path
+              d="M12 3v18M16 7.5c-.8-1-2.2-1.5-4-1.5-2.2 0-3.8 1-3.8 2.8 0 4 7.8 2 7.8 6.2 0 1.8-1.7 3-4 3-1.9 0-3.4-.6-4.2-1.7" />
+          </svg></span><span class="dock__label">Open Billing</span></button>
+      <button class="dock__btn" type="button" data-app="Rewards"><span class="app-icon app-icon--amber"><svg
+            viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" />
+          </svg></span><span class="dock__label">Open Rewards</span></button>
+      <button class="dock__btn" type="button" data-app="Plugins"><span class="app-icon app-icon--teal"><svg
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M12 3 4 7.5v9L12 21l8-4.5v-9L12 3Z" />
+            <path d="M12 12 4 7.5M12 12l8-4.5M12 12v9" />
+          </svg></span><span class="dock__label">Open Plugins</span></button>
+    </aside>
+  </div>
+
+  <div class="tooltip" id="tooltip" role="presentation" hidden></div>
+  <div class="toast-region" id="toasts" role="status" aria-live="polite"></div>
+
+  <script src="js/app.js" type="module"></script>
+</body>
+
+</html>
