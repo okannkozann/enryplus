@@ -964,22 +964,27 @@ export class ModelsController {
             
             <!-- KART 1: HAT YOK LİSTE PAYLAŞILDI -->
             <article class="chevron-card" id="card-stage-1">
-              <!-- Yukarıda ikon yerine dosya ekleme işlevi -->
-              <div class="chevron-card__upload-trigger ${project.stage1.file ? 'has-file' : ''}" id="trigger-upload-stage1" title="${project.stage1.file ? 'Dosyayı Değiştir (.xlsx)' : 'Hat Yok Liste (.xlsx) Yükle'}" role="button" tabindex="0">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  ${project.stage1.file ? `
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
-                  ` : `
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
-                  `}
-                </svg>
-                <span class="upload-trigger-subtext">${project.stage1.file ? 'Değiştir' : '+ .xlsx'}</span>
+              <!-- Yukarıda ikonlar: Ekle ikonu (yazısız) ve Görüntüleme ikonu (yazısız) -->
+              <div class="card-top-actions">
+                <!-- Ekle İkonu (Yazısız) -->
+                <button class="card-action-btn-circle card-action-btn-circle--add" id="trigger-upload-stage1" type="button" title="${project.stage1.file ? 'Dosyayı Değiştir (.xlsx)' : 'Hat Yok Liste Ekle (.xlsx)'}" aria-label="Hat Yok Liste Ekle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <path d="M12 5v14M5 12h14"/>
+                  </svg>
+                </button>
+
+                <!-- Görüntüleme İkonu (Yazısız) -->
+                <button class="card-action-btn-circle card-action-btn-circle--view ${!project.stage1.file ? 'is-disabled' : ''}" data-view-stage1 type="button" title="${project.stage1.file ? project.stage1.file.name + ' Görüntüle' : 'Dosya eklenmedi'}" aria-label="Hat Yok Liste Görüntüle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                  </svg>
+                </button>
               </div>
 
-              <!-- İlgili başlık ortada -->
+              <!-- İlgili başlık ortada (Doğal Türkçe karakterler ve sayfa tasarım stili) -->
               <h2 class="chevron-card__title">Hat Yok Liste<br/>Paylaşıldı</h2>
 
-              <!-- Başlığın altında bekliyor veya tamamlandı seçimi & dosya eklendiyse görüntüle ikonu -->
+              <!-- Başlığın altında bekliyor veya tamamlandı seçimi & dosya adı -->
               <div class="chevron-card__body">
                 <div class="status-pill-toggle">
                   <button class="status-pill-btn ${stage1Status === 'bekliyor' ? 'is-active-waiting' : ''}" data-stage1-status="bekliyor" type="button">Bekliyor</button>
@@ -987,17 +992,16 @@ export class ModelsController {
                 </div>
 
                 ${project.stage1.file ? `
-                  <div class="file-view-badge-wrap anim-fade-in">
-                    <button class="btn-view-attached-file" data-view-stage1 type="button" title="${project.stage1.file.name} Görüntüle">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 15px; height: 15px;">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                  <div class="file-view-badge-wrap anim-fade-in" style="margin-top: 6px;">
+                    <span class="file-hint-name" title="${project.stage1.file.name}">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 12px; height: 12px; vertical-align: middle; margin-right: 4px; color: #10b981;">
+                        <polyline points="20 6 9 17 4 12"/>
                       </svg>
-                      <span>Görüntüle</span>
-                    </button>
-                    <span class="file-hint-name" title="${project.stage1.file.name}">${project.stage1.file.name}</span>
+                      ${project.stage1.file.name}
+                    </span>
                   </div>
                 ` : `
-                  <span class="file-hint-name" style="color: #94a3b8; font-style: italic;">Dosya yüklenmedi</span>
+                  <span class="file-hint-name" style="color: #94a3b8; font-style: italic; margin-top: 6px;">Dosya yüklenmedi</span>
                 `}
               </div>
             </article>
@@ -1007,22 +1011,27 @@ export class ModelsController {
 
             <!-- KART 2: TATBİKAT PROJESİ TESLİM ALINDI -->
             <article class="chevron-card" id="card-stage-2">
-              <!-- Yukarıda ikon yerine dosya ekleme işlevi -->
-              <div class="chevron-card__upload-trigger ${project.stage2.file ? 'has-file' : ''}" id="trigger-upload-stage2" title="${project.stage2.file ? 'Dosyayı Değiştir (.pdf)' : 'Tatbikat Projesi (.pdf) Yükle'}" role="button" tabindex="0">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  ${project.stage2.file ? `
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
-                  ` : `
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
-                  `}
-                </svg>
-                <span class="upload-trigger-subtext">${project.stage2.file ? 'Değiştir' : '+ .pdf'}</span>
+              <!-- Yukarıda ikonlar: Ekle ikonu (yazısız) ve Görüntüleme ikonu (yazısız) -->
+              <div class="card-top-actions">
+                <!-- Ekle İkonu (Yazısız) -->
+                <button class="card-action-btn-circle card-action-btn-circle--add" id="trigger-upload-stage2" type="button" title="${project.stage2.file ? 'Tatbikat Projesini Değiştir (.pdf)' : 'Tatbikat Projesi Ekle (.pdf)'}" aria-label="Tatbikat Projesi Ekle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <path d="M12 5v14M5 12h14"/>
+                  </svg>
+                </button>
+
+                <!-- Görüntüleme İkonu (Yazısız) -->
+                <button class="card-action-btn-circle card-action-btn-circle--view ${!project.stage2.file ? 'is-disabled' : ''}" data-view-stage2 type="button" title="${project.stage2.file ? project.stage2.file.name + ' Görüntüle' : 'Dosya eklenmedi'}" aria-label="Tatbikat Projesi Görüntüle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                  </svg>
+                </button>
               </div>
 
               <!-- İlgili başlık ortada -->
               <h2 class="chevron-card__title">Tatbikat Projesi<br/>Teslim Alındı</h2>
 
-              <!-- Başlığın altında bekliyor veya tamamlandı seçimi & dosya eklendiyse görüntüle ikonu -->
+              <!-- Başlığın altında bekliyor veya tamamlandı seçimi & dosya adı -->
               <div class="chevron-card__body">
                 <div class="status-pill-toggle">
                   <button class="status-pill-btn ${stage2Status === 'bekliyor' ? 'is-active-waiting' : ''}" data-stage2-status="bekliyor" type="button">Bekliyor</button>
@@ -1030,17 +1039,16 @@ export class ModelsController {
                 </div>
 
                 ${project.stage2.file ? `
-                  <div class="file-view-badge-wrap anim-fade-in">
-                    <button class="btn-view-attached-file" data-view-stage2 type="button" title="${project.stage2.file.name} Görüntüle">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 15px; height: 15px;">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                  <div class="file-view-badge-wrap anim-fade-in" style="margin-top: 6px;">
+                    <span class="file-hint-name" title="${project.stage2.file.name}">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 12px; height: 12px; vertical-align: middle; margin-right: 4px; color: #10b981;">
+                        <polyline points="20 6 9 17 4 12"/>
                       </svg>
-                      <span>Görüntüle</span>
-                    </button>
-                    <span class="file-hint-name" title="${project.stage2.file.name}">${project.stage2.file.name}</span>
+                      ${project.stage2.file.name}
+                    </span>
                   </div>
                 ` : `
-                  <span class="file-hint-name" style="color: #94a3b8; font-style: italic;">Dosya yüklenmedi</span>
+                  <span class="file-hint-name" style="color: #94a3b8; font-style: italic; margin-top: 6px;">Dosya yüklenmedi</span>
                 `}
               </div>
             </article>
@@ -1082,17 +1090,22 @@ export class ModelsController {
                       <span class="branch-radio-dot"></span>
                       <span class="branch-card-title">Yazı Gönderildi</span>
                     </div>
-                    <!-- Yazı Gönderildi Yanında Görüntüleme İkonu -->
+                    <!-- Görüntüleme ve Ekleme İkonları -->
                     <div class="branch-actions-wrap">
-                      <button class="btn-view-icon-only" data-view-sent-letter type="button" title="${project.stage3.applicationFile ? 'Gönderilen Resmi Yazıyı Görüntüle' : 'Resmi Yazı Ekle (.pdf)'}">
+                      <button class="btn-view-icon-only ${!project.stage3.applicationFile ? 'is-disabled' : ''}" data-view-sent-letter type="button" title="${project.stage3.applicationFile ? 'Gönderilen Resmi Yazıyı Görüntüle' : 'Dosya eklenmedi'}">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                           <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                        </svg>
+                      </button>
+                      <button class="btn-add-icon-only" data-upload-sent-letter type="button" title="${project.stage3.applicationFile ? 'Resmi Yazıyı Değiştir (.pdf)' : 'Resmi Yazı Ekle (.pdf)'}">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M12 5v14M5 12h14"/>
                         </svg>
                       </button>
                     </div>
                   </div>
                   <p class="branch-card-desc">
-                    ${project.stage3.applicationFile ? project.stage3.applicationFile.name : 'Belediyeye resmi başvuru yazısı'}
+                    ${project.stage3.applicationFile ? project.stage3.applicationFile.name : 'Belediyeye resmi başvuru yazısı (.pdf)'}
                   </p>
                 </article>
 
@@ -1114,18 +1127,22 @@ export class ModelsController {
                       <span class="branch-radio-dot"></span>
                       <span class="branch-card-title">Onaylandı</span>
                     </div>
-                    ${project.stage3.approvalFile ? `
-                      <div class="branch-actions-wrap">
-                        <button class="btn-view-icon-only" data-view-approval-doc type="button" title="Onaylı Ruhsat Belgesini Görüntüle">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
-                          </svg>
-                        </button>
-                      </div>
-                    ` : ''}
+                    <!-- Görüntüleme ve Ekleme İkonları -->
+                    <div class="branch-actions-wrap">
+                      <button class="btn-view-icon-only ${!project.stage3.approvalFile ? 'is-disabled' : ''}" data-view-approval-doc type="button" title="${project.stage3.approvalFile ? 'Onaylı Ruhsat Belgesini Görüntüle' : 'Belge eklenmedi'}">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                        </svg>
+                      </button>
+                      <button class="btn-add-icon-only" data-upload-approval-doc type="button" title="${project.stage3.approvalFile ? 'Ruhsat Belgesini Değiştir (.pdf)' : 'Onaylı Ruhsat Belgesi Ekle (.pdf)'}">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                      </button>
+                    </div>
                   </div>
                   <p class="branch-card-desc">
-                    ${project.stage3.approvalFile ? project.stage3.approvalFile.name : 'Belediye ruhsat onayı tamamlandı'}
+                    ${project.stage3.approvalFile ? project.stage3.approvalFile.name : 'Belediye ruhsat onay belgesi (.pdf)'}
                   </p>
 
                   <!-- Onaylandı Seçilince Açılan İki Field (Ruhsat Başlangıç & Bitiş Tarihi) -->
@@ -1197,9 +1214,13 @@ export class ModelsController {
 
     // 5. Statü 1 Dosya Görüntüleme Butonu
     const viewBtn1 = this.target.querySelector('[data-view-stage1]');
-    if (viewBtn1 && project.stage1.file) {
+    if (viewBtn1) {
       viewBtn1.addEventListener('click', () => {
-        this.openFileModal(project.stage1.file, 'stage1', district, project);
+        if (project.stage1.file) {
+          this.openFileModal(project.stage1.file, 'stage1', district, project);
+        } else {
+          window.showToast?.('Henüz dosya eklenmemiş. Lütfen (+) butonundan .xlsx yükleyiniz.');
+        }
       });
     }
 
@@ -1236,9 +1257,13 @@ export class ModelsController {
 
     // 8. Statü 2 Dosya Görüntüleme Butonu
     const viewBtn2 = this.target.querySelector('[data-view-stage2]');
-    if (viewBtn2 && project.stage2.file) {
+    if (viewBtn2) {
       viewBtn2.addEventListener('click', () => {
-        this.openFileModal(project.stage2.file, 'stage2', district, project);
+        if (project.stage2.file) {
+          this.openFileModal(project.stage2.file, 'stage2', district, project);
+        } else {
+          window.showToast?.('Henüz dosya eklenmemiş. Lütfen (+) butonundan .pdf yükleyiniz.');
+        }
       });
     }
 
@@ -1261,14 +1286,14 @@ export class ModelsController {
     // 10. Sağdaki Branş Seçimleri (Yazı Gönderildi, Bekliyor, Onaylandı)
     this.target.querySelectorAll('[data-branch-select]').forEach(branchCard => {
       branchCard.addEventListener('click', (e) => {
-        // Date inputlara tıklanırsa seçimi sıfırlama
-        if (e.target.closest('.approved-date-fields') || e.target.closest('.btn-view-icon-only')) return;
+        // Date inputlara veya ikon butonlarına tıklanırsa seçimi sıfırlama
+        if (e.target.closest('.approved-date-fields') || e.target.closest('.btn-view-icon-only') || e.target.closest('.btn-add-icon-only')) return;
         const targetBranch = branchCard.getAttribute('data-branch-select');
         project.stage3.subStatus = targetBranch;
         this.renderProjectDetail(district, project);
       });
       branchCard.addEventListener('keydown', (e) => {
-        if (e.target.closest('.approved-date-fields') || e.target.closest('.btn-view-icon-only')) return;
+        if (e.target.closest('.approved-date-fields') || e.target.closest('.btn-view-icon-only') || e.target.closest('.btn-add-icon-only')) return;
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           const targetBranch = branchCard.getAttribute('data-branch-select');
@@ -1278,47 +1303,71 @@ export class ModelsController {
       });
     });
 
-    // 11. Yazı Gönderildi Yanındaki Görüntüleme İkonu
+    // 11. Yazı Gönderildi Görüntüleme ve Ekleme İkonları
     const viewSentBtn = this.target.querySelector('[data-view-sent-letter]');
+    const uploadSentBtn = this.target.querySelector('[data-upload-sent-letter]');
     const fileInputApp = this.target.querySelector('#file-input-stage3-app');
+
     if (viewSentBtn) {
       viewSentBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         if (project.stage3.applicationFile) {
           this.openFileModal(project.stage3.applicationFile, 'stage3-app', district, project);
-        } else if (fileInputApp) {
-          fileInputApp.click();
+        } else {
+          window.showToast?.('Henüz başvuru yazısı yüklenmemiş. Yanındaki (+) ikonundan .pdf ekleyebilirsiniz.');
         }
       });
     }
+
+    if (uploadSentBtn && fileInputApp) {
+      uploadSentBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        fileInputApp.click();
+      });
+    }
+
     if (fileInputApp) {
       fileInputApp.addEventListener('change', (e) => {
         const file = e.target.files?.[0];
         if (file) {
           project.stage3.applicationFile = { name: file.name, type: 'pdf' };
           project.stage3.subStatus = 'yazi_gonderildi';
-          window.showToast?.(`"${file.name}" Başvuru Yazısı olarak eklendi.`);
+          window.showToast?.(`"${file.name}" Başvuru Yazısı (.pdf) olarak eklendi.`);
           this.renderProjectDetail(district, project);
         }
       });
     }
 
-    // 12. Onaylı Ruhsat Belgesi Görüntüleme İkonu
+    // 12. Onaylı Ruhsat Belgesi Görüntüleme ve Ekleme İkonları
     const viewApprovalBtn = this.target.querySelector('[data-view-approval-doc]');
+    const uploadApprovalBtn = this.target.querySelector('[data-upload-approval-doc]');
     const fileInputApproval = this.target.querySelector('#file-input-stage3-approval');
-    if (viewApprovalBtn && project.stage3.approvalFile) {
+
+    if (viewApprovalBtn) {
       viewApprovalBtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        this.openFileModal(project.stage3.approvalFile, 'stage3-approval', district, project);
+        if (project.stage3.approvalFile) {
+          this.openFileModal(project.stage3.approvalFile, 'stage3-approval', district, project);
+        } else {
+          window.showToast?.('Henüz onaylı ruhsat belgesi yüklenmemiş. Yanındaki (+) ikonundan .pdf ekleyebilirsiniz.');
+        }
       });
     }
+
+    if (uploadApprovalBtn && fileInputApproval) {
+      uploadApprovalBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        fileInputApproval.click();
+      });
+    }
+
     if (fileInputApproval) {
       fileInputApproval.addEventListener('change', (e) => {
         const file = e.target.files?.[0];
         if (file) {
           project.stage3.approvalFile = { name: file.name, type: 'pdf' };
           project.stage3.subStatus = 'onaylandi';
-          window.showToast?.(`"${file.name}" Onaylı Ruhsat Belgesi olarak kaydedildi.`);
+          window.showToast?.(`"${file.name}" Onaylı Ruhsat Belgesi (.pdf) olarak kaydedildi.`);
           this.renderProjectDetail(district, project);
         }
       });

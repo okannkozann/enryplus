@@ -17,6 +17,8 @@ body.is-models-active .app {
   height: 100dvh !important;
   max-height: 100vh !important;
   max-height: 100dvh !important;
+  grid-template-rows: 100% !important;
+  align-items: stretch !important;
   padding-top: var(--space-2) !important;
   padding-bottom: var(--space-2) !important;
   overflow: hidden !important;
@@ -31,6 +33,10 @@ body.is-models-active .dock {
 body.is-models-active .main {
   height: 100% !important;
   max-height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
   overflow: hidden !important;
   gap: 0 !important;
 }
@@ -40,10 +46,12 @@ body.is-models-active .main {
    Referans Görsel: Sol Üstten Kulakçıklı Klasör, Sadece İlçe İsmi, Ortalanmış
    ========================================================================== */
 #models-view {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  height: 100% !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
 }
 
 #models-view[hidden],
@@ -52,11 +60,13 @@ body.is-models-active .main {
 }
 
 .models-view {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  max-height: 100%;
-  overflow: hidden;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
   animation: rise 300ms var(--motion-ease-standard) both;
 }
 
@@ -78,12 +88,14 @@ body.is-models-active .main {
 }
 
 .models-stage {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-2);
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: var(--space-2) !important;
+  margin: auto 0 !important;
 }
 
 .folder-grid-centered {
@@ -93,6 +105,7 @@ body.is-models-active .main {
   gap: clamp(16px, 1.6vw, 24px);
   justify-content: center;
   align-content: center;
+  margin: auto;
 }
 
 .sample-folder-card {
@@ -178,12 +191,14 @@ body.is-models-active .main {
    2. İLÇE İÇİ PROJE KLASÖRLERİ GÖRÜNÜMÜ (.projects-view)
    ========================================================================== */
 .projects-view {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  max-height: 100%;
-  overflow: hidden;
-  gap: var(--space-2);
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  gap: 0 !important;
   animation: rise 300ms var(--motion-ease-standard) both;
 }
 
@@ -235,21 +250,24 @@ body.is-models-active .main {
 }
 
 .projects-stage {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-2);
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: var(--space-2) var(--space-4) !important;
+  margin: auto 0 !important;
 }
 
 .projects-grid-centered {
   display: grid;
-  grid-template-columns: repeat(2, clamp(280px, 26vw, 340px));
-  grid-auto-rows: clamp(170px, 17vh, 200px);
-  gap: 20px;
+  grid-template-columns: repeat(2, clamp(340px, 32vw, 420px));
+  grid-auto-rows: clamp(190px, 22vh, 230px);
+  gap: clamp(24px, 2.5vw, 36px);
   justify-content: center;
   align-content: center;
+  margin: auto;
 }
 
 .folder-card-flowchart {
@@ -297,22 +315,38 @@ body.is-models-active .main {
 }
 
 .folder-card-flowchart__header {
-  height: 38px;
+  height: 42px;
   display: flex;
   align-items: center;
-  padding: 0 20px;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 18px 0 22px;
 }
 
 .folder-card-flowchart__title {
   margin: 0;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--color-navy-900, #141738);
   letter-spacing: -0.02em;
-  line-height: 1.1;
+  line-height: 1.15;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
+}
+
+.project-header-code {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-action-primary);
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  padding: 2px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .folder-card-flowchart__body {
@@ -391,12 +425,14 @@ body.is-models-active .main {
 
 /* Süreç Konteyneri (Ekranı Ortala, Sıfır Scroll) */
 .chevron-process-stage {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-1);
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: var(--space-1) !important;
+  margin: auto 0 !important;
 }
 
 .chevron-pipeline {
@@ -430,59 +466,75 @@ body.is-models-active .main {
   box-shadow: 0 18px 38px -4px rgba(45, 52, 115, 0.12);
 }
 
-/* Yukarıda İkon Yerine Dosya Ekleme İşlevi */
-.chevron-card__upload-trigger {
-  width: 58px;
-  height: 58px;
-  border-radius: 18px;
+/* Yukarıda Ekle ve Görüntüle İkonları (Yazısız) */
+.card-top-actions {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
+  gap: 12px;
+  width: 100%;
+}
+
+.card-action-btn-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
   cursor: pointer;
-  background: linear-gradient(135deg, #f5f7fe 0%, #edf0fb 100%);
-  border: 1.8px dashed rgba(79, 70, 229, 0.4);
-  color: var(--color-action-primary);
+  border: 1.5px solid transparent;
   transition: all var(--motion-duration-fast);
 }
 
-.upload-trigger-subtext {
-  font-size: 9.5px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
-  line-height: 1;
+.card-action-btn-circle--add {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #059669;
 }
 
-.chevron-card__upload-trigger:hover {
-  transform: scale(1.06);
-  border-color: var(--color-action-primary);
-  background: #ffffff;
-  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.18);
+.card-action-btn-circle--add:hover {
+  background: #10b981;
+  color: #ffffff;
+  border-color: #10b981;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+  transform: translateY(-2px);
 }
 
-.chevron-card__upload-trigger.has-file {
-  border-style: solid;
-  border-color: rgba(16, 185, 129, 0.6);
-  background: linear-gradient(135deg, #f0fdf4 0%, #e6f9ed 100%);
-  color: #10b981;
+.card-action-btn-circle--view {
+  background: rgba(59, 130, 246, 0.08);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: #2563eb;
 }
 
-.chevron-card__upload-trigger svg {
-  width: 22px;
-  height: 22px;
+.card-action-btn-circle--view:hover {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+  transform: translateY(-2px);
 }
 
-/* Ortada İlgili Başlık (Büyük & Vurgulu) */
+.card-action-btn-circle.is-disabled {
+  opacity: 0.32;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+
+.card-action-btn-circle svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Ortada İlgili Başlık (Doğal Türkçe Karakterler & Sayfa Genel Tipografisi) */
 .chevron-card__title {
-  margin: 18px 0 12px;
-  font-size: 15px;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  margin: 16px 0 14px;
+  font-family: var(--font-family-stack);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  text-transform: none;
   color: var(--color-navy-900, #141738);
-  line-height: 1.25;
+  line-height: 1.3;
 }
 
 .chevron-card__body {
@@ -748,9 +800,44 @@ body.is-models-active .main {
 .btn-view-icon-only:hover {
   background: #2563eb;
   color: #ffffff;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+  transform: translateY(-1px);
+}
+
+.btn-view-icon-only.is-disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  filter: grayscale(1);
 }
 
 .btn-view-icon-only svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Yazı Gönderildi ve Onaylandı Yanındaki Ekleme İkonu */
+.btn-add-icon-only {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  background: rgba(16, 185, 129, 0.08);
+  color: #059669;
+  cursor: pointer;
+  transition: all var(--motion-duration-fast);
+}
+
+.btn-add-icon-only:hover {
+  background: #10b981;
+  color: #ffffff;
+  border-color: #10b981;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+  transform: translateY(-1px);
+}
+
+.btn-add-icon-only svg {
   width: 16px;
   height: 16px;
 }
